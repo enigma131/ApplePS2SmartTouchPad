@@ -90,6 +90,8 @@ private:
     }
     
 public:
+    virtual IOService * matchLocation(IOService *client);
+
     virtual bool start(IOService *provider);
     virtual IOReturn message( UInt32 type, IOService * provider, void * argument);
 

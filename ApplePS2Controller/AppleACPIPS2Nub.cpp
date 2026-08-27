@@ -48,6 +48,10 @@ OSDefineMetaClassAndStructors(AppleACPIPS2Nub, IOPlatformDevice);
 // from AppleACPIPlatformExpert.kext
 //extern IOPlatformExpert *gAppleACPIPlatformExpert;
 
+IOService * AppleACPIPS2Nub::matchLocation(IOService *client)
+{
+	return IOPlatformDevice::matchLocation(client);
+}
 
 bool AppleACPIPS2Nub::start(IOService *provider)
 {
@@ -104,8 +108,14 @@ bool AppleACPIPS2Nub::start(IOService *provider)
         }
     }
     /* Release the arrays we allocated.  Our properties dictionary has them retained */
-    OSSafeReleaseNULL(m_interruptControllers);
-    OSSafeReleaseNULL(m_interruptSpecifiers);
+	if (m_interruptControllers) {
+		m_interruptControllers->release();
+		m_interruptControllers = NULL;
+	}
+	if (m_interruptSpecifiers) {
+		m_interruptSpecifiers->release();
+		m_interruptSpecifiers = NULL;
+	}
     
     /* Make ourselves the ps2controller nub and register so ApplePS2Controller can find us. */
     setName("ps2controller");

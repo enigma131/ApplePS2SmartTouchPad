@@ -1,3 +1,24 @@
+ApplePS2SmartTouchPad Intel 32 bits  
+===================================
+
+I had no tackpad support for Tiger and Leopard on the Acer laptop hackintosh.  
+This work was possible since EMlyDinEsH has published his work on github at april this year.  
+As reference: https://github.com/EMlyDinEsHMG/ApplePS2SmartTouchPad . Thanks to he's work.  
+The FAT combined 32+64 bits versions with Lipo are working with all Intel MacOS from Tiger to Tahoe.  
+  
+### Commit 1 :  
+Xcode 2.5 compatibility for ApplePS2Controller.kext, targets Tiger + Leopard 32 bits.  
+If you need a FAT version, you can combine Tiger 32 bits compilation and Snow Leopard 64 bit compilation (Xcode 4.6 is need) with lipo.  
+For compatibility with Leopard, AppleACPIPS2Nub is keeped embedded in kext and Tiger's internal one must be disabled with bellow kernel patch.  
+  
+Using with Opencore:  
+Kernel->add   : your compiled ApplePS2Controller.kext (32 bits or FAT version)  
+Kernel->Patch : identifier: com.apple.driver.AppleACPIPlatform, base: __GLOBAL__I__ZN15AppleACPIPS2Nub10gMetaClassE, max kernel: 8.99  
+  
+Original readme.md :  
+
+
+
 # ApplePS2SmartTouchPad
 
 macOS kernel extension (kext) providing **advanced PS/2 touchpad and keyboard support** with multi-touch gesture capabilities for Hackintosh laptops.

@@ -3,36 +3,36 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 42;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		141C99D61CE9DDE8002DAC07 /* SmartTouchpadFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 141C99D41CE9DDE8002DAC07 /* SmartTouchpadFeatures.cpp */; settings = {COMPILER_FLAGS = "-Wno-deprecated-register"; }; };
+		141C99D61CE9DDE8002DAC07 /* SmartTouchpadFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 141C99D41CE9DDE8002DAC07 /* SmartTouchpadFeatures.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		141C99D71CE9DDE8002DAC07 /* SmartTouchpadFeatures.h in Headers */ = {isa = PBXBuildFile; fileRef = 141C99D51CE9DDE8002DAC07 /* SmartTouchpadFeatures.h */; };
 		1469B0F31D6598C000A04A74 /* PlistInjectPrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 1469B0F21D6598C000A04A74 /* PlistInjectPrefixHeader.pch */; };
-		149E47791CE8C6AC00CFA9D5 /* PS2Interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 149E47771CE8C6AC00CFA9D5 /* PS2Interface.cpp */; settings = {COMPILER_FLAGS = "-Wno-deprecated-register"; }; };
+		149E47791CE8C6AC00CFA9D5 /* PS2Interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 149E47771CE8C6AC00CFA9D5 /* PS2Interface.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		149E477A1CE8C6AC00CFA9D5 /* PS2Interface.h in Headers */ = {isa = PBXBuildFile; fileRef = 149E47781CE8C6AC00CFA9D5 /* PS2Interface.h */; };
 		14B2A3B41D65AD5B009EFD8D /* Features Documentation.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 14B2A3B31D65AD5B009EFD8D /* Features Documentation.rtfd */; };
 		14DE04661B47D910007CEBF4 /* ApplePS2SmartTouchPad.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE04651B47D910007CEBF4 /* ApplePS2SmartTouchPad.h */; };
-		14DE04681B47D910007CEBF4 /* ApplePS2SmartTouchPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04671B47D910007CEBF4 /* ApplePS2SmartTouchPad.cpp */; settings = {COMPILER_FLAGS = "-Wno-deprecated-register"; }; };
+		14DE04681B47D910007CEBF4 /* ApplePS2SmartTouchPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04671B47D910007CEBF4 /* ApplePS2SmartTouchPad.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		14DE04781B47D921007CEBF4 /* ApplePS2Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE04771B47D921007CEBF4 /* ApplePS2Controller.h */; };
-		14DE047A1B47D921007CEBF4 /* ApplePS2Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04791B47D921007CEBF4 /* ApplePS2Controller.cpp */; settings = {COMPILER_FLAGS = "-Wno-deprecated-register"; }; };
+		14DE047A1B47D921007CEBF4 /* ApplePS2Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04791B47D921007CEBF4 /* ApplePS2Controller.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		14DE04881B47D949007CEBF4 /* ApplePS2Keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE04871B47D949007CEBF4 /* ApplePS2Keyboard.h */; };
-		14DE048A1B47D949007CEBF4 /* ApplePS2Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04891B47D949007CEBF4 /* ApplePS2Keyboard.cpp */; settings = {COMPILER_FLAGS = "-Wno-deprecated-register"; }; };
+		14DE048A1B47D949007CEBF4 /* ApplePS2Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04891B47D949007CEBF4 /* ApplePS2Keyboard.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		14DE048F1B47DA2E007CEBF4 /* ApplePS2Controller.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14DE04731B47D921007CEBF4 /* ApplePS2Controller.kext */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		14DE04901B47DA33007CEBF4 /* ApplePS2Keyboard.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14DE04831B47D949007CEBF4 /* ApplePS2Keyboard.kext */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		14DE04981B47DC6A007CEBF4 /* AppleACPIPS2Nub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04911B47DC6A007CEBF4 /* AppleACPIPS2Nub.cpp */; settings = {COMPILER_FLAGS = "-Wno-deprecated-register"; }; };
-		14DE04991B47DC6A007CEBF4 /* AppleACPIPS2Nub.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE04921B47DC6A007CEBF4 /* AppleACPIPS2Nub.h */; };
 		14DE049A1B47DC6A007CEBF4 /* ApplePS2Device.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE04931B47DC6A007CEBF4 /* ApplePS2Device.h */; };
-		14DE049B1B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04941B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.cpp */; settings = {COMPILER_FLAGS = "-Wno-deprecated-register"; }; };
+		14DE049B1B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04941B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		14DE049C1B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE04951B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.h */; };
-		14DE049D1B47DC6A007CEBF4 /* ApplePS2MouseDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04961B47DC6A007CEBF4 /* ApplePS2MouseDevice.cpp */; settings = {COMPILER_FLAGS = "-Wno-deprecated-register"; }; };
+		14DE049D1B47DC6A007CEBF4 /* ApplePS2MouseDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DE04961B47DC6A007CEBF4 /* ApplePS2MouseDevice.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		14DE049E1B47DC6A007CEBF4 /* ApplePS2MouseDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE04971B47DC6A007CEBF4 /* ApplePS2MouseDevice.h */; };
 		14DE04A01B47DE50007CEBF4 /* ApplePS2ToADBMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE049F1B47DE50007CEBF4 /* ApplePS2ToADBMap.h */; };
 		14DE04A51B47DE7C007CEBF4 /* ELAN.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE04A11B47DE7C007CEBF4 /* ELAN.h */; };
 		14DE04A61B47DE7C007CEBF4 /* FocalTech.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE04A21B47DE7C007CEBF4 /* FocalTech.h */; };
 		14DE04A71B47DE7C007CEBF4 /* Synaptics documentation.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 14DE04A31B47DE7C007CEBF4 /* Synaptics documentation.rtfd */; };
 		14DE04A81B47DE7C007CEBF4 /* Synaptics.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DE04A41B47DE7C007CEBF4 /* Synaptics.h */; };
+		41347F4B3000F92900AF6A81 /* AppleACPIPS2Nub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41347F4A3000F92900AF6A81 /* AppleACPIPS2Nub.cpp */; };
+		41347F4D3000F93700AF6A81 /* AppleACPIPS2Nub.h in Headers */ = {isa = PBXBuildFile; fileRef = 41347F4C3000F93700AF6A81 /* AppleACPIPS2Nub.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,19 +57,17 @@
 		149E47781CE8C6AC00CFA9D5 /* PS2Interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PS2Interface.h; sourceTree = "<group>"; };
 		14B2A3B31D65AD5B009EFD8D /* Features Documentation.rtfd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.rtfd; path = "Features Documentation.rtfd"; sourceTree = "<group>"; };
 		14DE04601B47D910007CEBF4 /* ApplePS2SmartTouchPad.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplePS2SmartTouchPad.kext; sourceTree = BUILT_PRODUCTS_DIR; };
-		14DE04641B47D910007CEBF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14DE04641B47D910007CEBF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		14DE04651B47D910007CEBF4 /* ApplePS2SmartTouchPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplePS2SmartTouchPad.h; sourceTree = "<group>"; };
 		14DE04671B47D910007CEBF4 /* ApplePS2SmartTouchPad.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ApplePS2SmartTouchPad.cpp; sourceTree = "<group>"; };
 		14DE04731B47D921007CEBF4 /* ApplePS2Controller.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplePS2Controller.kext; sourceTree = BUILT_PRODUCTS_DIR; };
-		14DE04761B47D921007CEBF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14DE04761B47D921007CEBF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		14DE04771B47D921007CEBF4 /* ApplePS2Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplePS2Controller.h; sourceTree = "<group>"; };
 		14DE04791B47D921007CEBF4 /* ApplePS2Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ApplePS2Controller.cpp; sourceTree = "<group>"; };
 		14DE04831B47D949007CEBF4 /* ApplePS2Keyboard.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplePS2Keyboard.kext; sourceTree = BUILT_PRODUCTS_DIR; };
-		14DE04861B47D949007CEBF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14DE04861B47D949007CEBF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		14DE04871B47D949007CEBF4 /* ApplePS2Keyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplePS2Keyboard.h; sourceTree = "<group>"; };
 		14DE04891B47D949007CEBF4 /* ApplePS2Keyboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ApplePS2Keyboard.cpp; sourceTree = "<group>"; };
-		14DE04911B47DC6A007CEBF4 /* AppleACPIPS2Nub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppleACPIPS2Nub.cpp; sourceTree = "<group>"; };
-		14DE04921B47DC6A007CEBF4 /* AppleACPIPS2Nub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleACPIPS2Nub.h; sourceTree = "<group>"; };
 		14DE04931B47DC6A007CEBF4 /* ApplePS2Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePS2Device.h; sourceTree = "<group>"; };
 		14DE04941B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ApplePS2KeyboardDevice.cpp; sourceTree = "<group>"; };
 		14DE04951B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePS2KeyboardDevice.h; sourceTree = "<group>"; };
@@ -80,6 +78,8 @@
 		14DE04A21B47DE7C007CEBF4 /* FocalTech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FocalTech.h; sourceTree = "<group>"; };
 		14DE04A31B47DE7C007CEBF4 /* Synaptics documentation.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = "Synaptics documentation.rtfd"; path = "ApplePS2SmartTouchPad/Synaptics documentation.rtfd"; sourceTree = "<group>"; };
 		14DE04A41B47DE7C007CEBF4 /* Synaptics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Synaptics.h; sourceTree = "<group>"; };
+		41347F4A3000F92900AF6A81 /* AppleACPIPS2Nub.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = AppleACPIPS2Nub.cpp; sourceTree = "<group>"; };
+		41347F4C3000F93700AF6A81 /* AppleACPIPS2Nub.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AppleACPIPS2Nub.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +165,8 @@
 		14DE04741B47D921007CEBF4 /* ApplePS2Controller */ = {
 			isa = PBXGroup;
 			children = (
-				14DE04911B47DC6A007CEBF4 /* AppleACPIPS2Nub.cpp */,
-				14DE04921B47DC6A007CEBF4 /* AppleACPIPS2Nub.h */,
+				41347F4C3000F93700AF6A81 /* AppleACPIPS2Nub.h */,
+				41347F4A3000F92900AF6A81 /* AppleACPIPS2Nub.cpp */,
 				14DE04931B47DC6A007CEBF4 /* ApplePS2Device.h */,
 				14DE04941B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.cpp */,
 				14DE04951B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.h */,
@@ -237,10 +237,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				14DE049A1B47DC6A007CEBF4 /* ApplePS2Device.h in Headers */,
-				14DE04991B47DC6A007CEBF4 /* AppleACPIPS2Nub.h in Headers */,
 				14DE049E1B47DC6A007CEBF4 /* ApplePS2MouseDevice.h in Headers */,
 				14DE049C1B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.h in Headers */,
 				14DE04781B47D921007CEBF4 /* ApplePS2Controller.h in Headers */,
+				41347F4D3000F93700AF6A81 /* AppleACPIPS2Nub.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,8 +332,7 @@
 				};
 			};
 			buildConfigurationList = 14DE045A1B47D910007CEBF4 /* Build configuration list for PBXProject "ApplePS2SmartTouchPad" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -394,7 +393,7 @@
 				14DE049D1B47DC6A007CEBF4 /* ApplePS2MouseDevice.cpp in Sources */,
 				14DE049B1B47DC6A007CEBF4 /* ApplePS2KeyboardDevice.cpp in Sources */,
 				14DE047A1B47D921007CEBF4 /* ApplePS2Controller.cpp in Sources */,
-				14DE04981B47DC6A007CEBF4 /* AppleACPIPS2Nub.cpp in Sources */,
+				41347F4B3000F92900AF6A81 /* AppleACPIPS2Nub.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,56 +408,13 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		14DE04691B47D910007CEBF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 4.6.8;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_KERNEL_DEVELOPMENT = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_PREFIX_HEADER = PlistInjectPrefixHeader.pch;
-				INFOPLIST_PREPROCESS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx10.8;
-			};
-			name = Debug;
-		};
 		14DE046A1B47D910007CEBF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -485,95 +441,68 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_PREFIX_HEADER = PlistInjectPrefixHeader.pch;
 				INFOPLIST_PREPROCESS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				VALID_ARCHS = i386;
 			};
 			name = Release;
-		};
-		14DE046C1B47D910007CEBF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4.6.8;
-				INFOPLIST_FILE = ApplePS2SmartTouchPad/Info.plist;
-				MODULE_NAME = org.emlydinesh.driver.ApplePS2SmartTouchPad;
-				MODULE_VERSION = 1.0.0d1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = kext;
-			};
-			name = Debug;
 		};
 		14DE046D1B47D910007CEBF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = i386;
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				CURRENT_PROJECT_VERSION = 4.6.8;
 				INFOPLIST_FILE = ApplePS2SmartTouchPad/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				MODULE_NAME = org.emlydinesh.driver.ApplePS2SmartTouchPad;
 				MODULE_VERSION = 1.0.0d1;
+				OTHER_LDFLAGS = "-Wl,-no_uuid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				STRIPFLAGS = "";
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
-		};
-		14DE047C1B47D922007CEBF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4.6.8;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ApplePS2Controller/Info.plist;
-				MODULE_NAME = org.emlydinesh.driver.ApplePS2Controller;
-				MODULE_VERSION = 1.0.0d1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = kext;
-			};
-			name = Debug;
 		};
 		14DE047D1B47D922007CEBF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = i386;
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				CURRENT_PROJECT_VERSION = 4.6.8;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = ApplePS2Controller/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				MODULE_NAME = org.emlydinesh.driver.ApplePS2Controller;
 				MODULE_VERSION = 1.0.0d1;
+				OTHER_LDFLAGS = "-Wl,-no_uuid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				STRIPFLAGS = "";
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
 		};
-		14DE048C1B47D949007CEBF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4.6.8;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ApplePS2Keyboard/Info.plist;
-				MODULE_NAME = org.emlydinesh.driver.ApplePS2Keyboard;
-				MODULE_VERSION = 1.0.0d1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = kext;
-			};
-			name = Debug;
-		};
 		14DE048D1B47D949007CEBF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = i386;
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				CURRENT_PROJECT_VERSION = 4.6.8;
 				INFOPLIST_FILE = ApplePS2Keyboard/Info.plist;
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				MODULE_NAME = org.emlydinesh.driver.ApplePS2Keyboard;
 				MODULE_VERSION = 1.0.0d1;
+				OTHER_LDFLAGS = "-Wl,-no_uuid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
@@ -584,7 +513,6 @@
 		14DE045A1B47D910007CEBF4 /* Build configuration list for PBXProject "ApplePS2SmartTouchPad" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				14DE04691B47D910007CEBF4 /* Debug */,
 				14DE046A1B47D910007CEBF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -593,7 +521,6 @@
 		14DE046B1B47D910007CEBF4 /* Build configuration list for PBXNativeTarget "ApplePS2SmartTouchPad" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				14DE046C1B47D910007CEBF4 /* Debug */,
 				14DE046D1B47D910007CEBF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -602,7 +529,6 @@
 		14DE047B1B47D922007CEBF4 /* Build configuration list for PBXNativeTarget "ApplePS2Controller" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				14DE047C1B47D922007CEBF4 /* Debug */,
 				14DE047D1B47D922007CEBF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -611,7 +537,6 @@
 		14DE048B1B47D949007CEBF4 /* Build configuration list for PBXNativeTarget "ApplePS2Keyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				14DE048C1B47D949007CEBF4 /* Debug */,
 				14DE048D1B47D949007CEBF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

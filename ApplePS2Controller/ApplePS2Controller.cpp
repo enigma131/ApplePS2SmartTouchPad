@@ -249,7 +249,7 @@ bool ApplePS2Controller::start(IOService * provider)
 #if DEBUGGER_SUPPORT
     // Enable special key sequence to enter debugger if debug boot-arg was set.
     int debugFlag = 0;
-    PE_parse_boot_argn("debug", &debugFlag, sizeof(debugFlag));
+//    PE_parse_boot_argn("debug", &debugFlag, sizeof(debugFlag));
     if (debugFlag) _debuggingEnabled = true;
     
     _keyboardQueueAlloc = (KeyboardQueueElement *)
@@ -1590,8 +1590,10 @@ void ApplePS2Controller::setPowerStateCallout( thread_call_param_t param0,
                                  /*   arg0 */ param1 );
     }
     
-    OSSafeRelease(me);
-}
+    if (me) {
+		me->release();
+		me = NULL;
+	}}
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
