@@ -536,33 +536,33 @@ protected:
     
 public:
     
-    virtual void Get_Gestures_Data() = 0; // Pure virtual function
+    void Get_Gestures_Data(); // Pure virtual function
     
     // Methods which processes all the features
-    virtual void Process_singlefinger_touch(int x, int y, int fid);
-    virtual void Process_twofingers_touch(int x1, int x2, int y1, int y2);
-    virtual void Process_multiFingers_touch(int m_x, int m_y, int fid);
-    virtual void Process_touch_end();
-    virtual void Process_fingers_change();
-    virtual void Process_scroll(UInt8 sMode, int sdx, int sdy, bool isZoomConflict);
-    virtual void Proces_Fingers_Press(UInt8 fingers);
-    virtual void Process_ClickPad_2F(unsigned char *packet, UInt8 packetType, int dx1, int dy1, int dx2, int dy2);
-    virtual void Process_edgeSwipe(int x, int y, int fid);
-    virtual void Dispatch_edgeSwipe(UInt8 gestureAction, UInt8 direction);
-    virtual void Is2FingEdgeSwipe();
+    void Process_singlefinger_touch(int x, int y, int fid);
+    void Process_twofingers_touch(int x1, int x2, int y1, int y2);
+    void Process_multiFingers_touch(int m_x, int m_y, int fid);
+    void Process_touch_end();
+    void Process_fingers_change();
+    void Process_scroll(UInt8 sMode, int sdx, int sdy, bool isZoomConflict);
+    void Proces_Fingers_Press(UInt8 fingers);
+    void Process_ClickPad_2F(unsigned char *packet, UInt8 packetType, int dx1, int dy1, int dx2, int dy2);
+    void Process_edgeSwipe(int x, int y, int fid);
+    void Dispatch_edgeSwipe(UInt8 gestureAction, UInt8 direction);
+    void Is2FingEdgeSwipe();
     
-    virtual void Process_Physical_Buttons(unsigned char *packet);
+    void Process_Physical_Buttons(unsigned char *packet);
     bool Process_ClickPad_Virtual_Buttons(unsigned char *packet, UInt8 packetType, UInt8 fid, UInt8 fCount);
-    virtual void Release_ButtonsAndDrag();
+    void Release_ButtonsAndDrag();
     
-    virtual void ResetPointerToMiddle();
-    virtual void Open_NC();
+    void ResetPointerToMiddle();
+    void Open_NC();
     
     // Timer methods for intertial scroll, features toggle and button relelase
-    virtual void EnhancePointerAcceleration();
-    virtual void EnhanceScrollAcceleration();
-    virtual void ProcessInertia(TouchPadModes mode);
-    virtual void ProcessFeaturesToggle();
+    void EnhancePointerAcceleration();
+    void EnhanceScrollAcceleration();
+    void ProcessInertia(TouchPadModes mode);
+    void ProcessFeaturesToggle();
     
     // ACPI and IOREG Polling
     void Process_ACPI_IOREG_Polling();

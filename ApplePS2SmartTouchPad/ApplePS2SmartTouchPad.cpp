@@ -346,7 +346,7 @@ IOReturn ApplePS2SmartTouchpad::setParamProperties( OSDictionary * config )
     OSBoolean* boolVar;
     OSNumber* numVar;
     // Setup boolean config
-    for (int i = 0; i < elementSizeOfArray(boolVars); i++)
+    for (unsigned int i = 0; i < sizeof(boolVars) / sizeof(boolVars[0]); i++)
      {
       //   IOLog("STD :: Key %s\n", boolVars[i].name);
 
@@ -364,7 +364,7 @@ IOReturn ApplePS2SmartTouchpad::setParamProperties( OSDictionary * config )
      }
     
     // Setup integer config
-    for (int i = 0; i < elementSizeOfArray(intVars); i++)
+    for (unsigned int i = 0; i < sizeof(intVars) / sizeof(intVars[0]); i++)
     {
        // IOLog("STD :: Key %s\n", boolVars[i].name);
         
@@ -683,7 +683,7 @@ void ApplePS2SmartTouchpad::setAccelAndResolution()
     setProperty(kIOHIDPointerAccelerationTypeKey, kIOHIDTrackpadAccelerationType);
     setProperty(kIOHIDScrollAccelerationTypeKey, kIOHIDTrackpadScrollAccelerationKey);
     
-    IOLog("STD :: Pointer resolution %d, Scroll resolution %d.\n", _pointerResolution, _scroll.resoultion);
+//    IOLog("STD :: Pointer resolution %d, Scroll resolution %d.\n", _pointerResolution, _scroll.resoultion);
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -740,7 +740,7 @@ bool ApplePS2SmartTouchpad::init( OSDictionary * properties )
     _debugLvl = 16;
 
     _device                 = 0;
-    _now                    = 0;
+    uint64_t _now           = 0;
     _stdWorkLoop            = 0;
 
     _pointerTimer           = 0;
@@ -782,13 +782,13 @@ bool ApplePS2SmartTouchpad::init( OSDictionary * properties )
     _xcenter    = 0;
     _ycenter    = 0;
 
-    _lastSample[SAMPLES_COUNT] = {0};
+    memset(&_lastSample, 0, sizeof(_lastSample)) ;
         
     _cSample        = 0;
     _skipSample     = 0;
     _scrollSample   = 0;
     
-    _ps2Mouse               = {0};
+    memset(&_ps2Mouse, 0, sizeof(_ps2Mouse));
     _ps2Mouse.mScaling      = kDP_SetMouseScaling1To1;
     _ps2Mouse.mSampleRate   = 80;
     _ps2Mouse.mResolution   = 3;
@@ -800,7 +800,7 @@ bool ApplePS2SmartTouchpad::init( OSDictionary * properties )
     _kBLightAutoOffTimeout  = 3000; // 3 sec
     
     clock_get_uptime(TIME_NOW);
-    _lastKBLightTriggerTime = absoluteToUINT64(_now);
+    _lastKBLightTriggerTime = *((uint64_t *)&_now);
     
     _acpiPollRate           = 1500000000; // 1500 ms
     _enableLidPolling       = true;
@@ -815,32 +815,32 @@ bool ApplePS2SmartTouchpad::init( OSDictionary * properties )
     _sid                    = -1;
     _cFingers               = 0;
     _lastFingers            = 0;
-    _fing[STD_MAX_FINGERS]  = {0};
+    memset(&_fing, 0, sizeof(_fing));
 
-    _drag                   = {0};
+    memset(&_drag, 0, sizeof(_drag));
     _drag.releaseTime       = 500; // 500 ms
 
-    _scroll                     = {0};
+    memset(&_scroll, 0, sizeof(_scroll));
     _scroll.resoultion          = 400;
-    _scroll.slingEffectRunTime  = 4000000000; // 4 sec
+    _scroll.slingEffectRunTime  = 4000000000U; // 4 sec
     _scroll.directionSamples    = 5;
 
-    _cornerTap              = {0};
-    _zoom                   = {0};
-    _rotate                 = {0};
-    _swipe                  = {0};
-    _fingPress              = {0};
+    memset(&_cornerTap, 0, sizeof(_cornerTap));
+    memset(&_zoom, 0, sizeof(_zoom));
+    memset(&_rotate, 0, sizeof(_rotate));
+    memset(&_swipe, 0, sizeof(_swipe));
+    memset(&_fingPress, 0, sizeof(_fingPress));
     
     _tap.mulFingsTimeout    = MAX_MULF_TAP_TIME;
     _tap.clickTimeout       = MAX_CLICK_TIME;
     _tap.timeout            = MAX_TAP_TIME;
-    _tap                    = {0};
+    memset(&_tap, 0, sizeof(_tap));
 
     _fings4PinchAction      = 0;
     _fings5PinchAction      = 0;
     
-    _button                 = {0};
-    _kbEvent                = {0};
+    memset(&_button, 0, sizeof(_button));
+    memset(&_kbEvent, 0, sizeof(_kbEvent));
     
     _isAsusNotebook             = false,
     _isFnKeyDisabledTouchpad    = false;
@@ -1296,8 +1296,10 @@ void ApplePS2SmartTouchpad::stop( IOService * provider )
     // Release workLoop
     //
     
-    OSSafeReleaseNULL(_stdWorkLoop);
-    
+    if (_stdWorkLoop) {
+		_stdWorkLoop->release();
+		_stdWorkLoop = NULL;
+	}
     //
     // Disable the mouse itself, so that it may stop reporting mouse events.
     //
@@ -1523,7 +1525,7 @@ void ApplePS2SmartTouchpad::ReadSTDPlistConfig()
                 _tpBottomEdgeDArea = (_tpBottomEdgeDArea > 0)? ((_ymax - _ymin) * _tpBottomEdgeDArea/100):0;
                 
                 if (_tpLeftEdgeDArea || _tpRightEdgeDArea || _tpTopEdgeDArea || _tpBottomEdgeDArea) {
-                    IOLog("STD :: Disabled Touchpad edges area for Left %d, Right %d, Top %d, Bottom %d\n", _tpLeftEdgeDArea, _tpRightEdgeDArea, _tpTopEdgeDArea, _tpBottomEdgeDArea);
+  //                  IOLog("STD :: Disabled Touchpad edges area for Left %d, Right %d, Top %d, Bottom %d\n", _tpLeftEdgeDArea, _tpRightEdgeDArea, _tpTopEdgeDArea, _tpBottomEdgeDArea);
                 }
             }
             
@@ -1613,8 +1615,6 @@ void ApplePS2SmartTouchpad::ReadSTDPlistConfig()
             if (OSDictionary *pSenseDict = OSDynamicCast(OSDictionary, pDict->getObject(Sensitivity)))
             {
                 _tSenseLvl = ReadPlistDictionaryKey(pSenseDict);
-                if (_tSenseLvl < 0 && _tSenseLvl > 255)
-                    _tSenseLvl = 0;
             }
             
             readPlistKey<bool>(pDict, Clickpad2FingersMove, BOOL_TYPE, _button.clickPad2FMove);
@@ -2020,10 +2020,6 @@ template <class pType> void ApplePS2SmartTouchpad::readPlistKey(const void* keyD
         case INT8_TYPE:
             if ((nKey = OSDynamicCast(OSNumber, ((OSDictionary*)keyDict)->getObject(keyStr)))) {
                 value = nKey->unsigned8BitValue();
-                
-                // Reset
-                if (value > 255)
-                    value = 0;
             }
             break;
             
@@ -2051,10 +2047,6 @@ template <class pType> void ApplePS2SmartTouchpad::readPlistKey(const void* keyD
     }
     
     DEBUG_LOG("STD :: %s Key -> value %d\n", keyStr, value);
-    
-    // Reset to default if its negative
-    if (value < 0)
-        value = 0;
 }
 
 UInt8 ApplePS2SmartTouchpad::ReadPlistDictionaryKey(OSDictionary *dict)
@@ -2303,7 +2295,10 @@ void ApplePS2SmartTouchpad::Process_ACPI_IOREG_Polling()
                 StopPointerEnhanceTimer();
             }
             
-            OSSafeRelease(fnDeviceEntry);
+            if (fnDeviceEntry) {
+				fnDeviceEntry->release();
+				fnDeviceEntry = NULL;
+		}
         }
         else {
             _isAsusNotebook = false;
@@ -2350,7 +2345,10 @@ void ApplePS2SmartTouchpad::Process_ACPI_IOREG_Polling()
                 IOLog("STD :: _LID method not found, touchpad control on LID Close/Open disabled.\n");
             }
             
-            OSSafeRelease(acpiProvider);
+            if (acpiProvider) {
+				acpiProvider->release();
+				acpiProvider = NULL;
+		}
         }
     }
     
@@ -6215,8 +6213,8 @@ void ApplePS2SmartTouchpad::Synaptics_report_absolute(unsigned char *packet)
     {
         // Ignore palm packets received after multi touch gesture
         if (_cFingers == 1 && _lastFingers > 1) {
-            IOLog("STD :: Ignored Touch for Pressure %d, Width %d, Finger(s) count %d, Packets Count %d Last Finger %d\n",
-                  _fing[0].pressure, _fing[0].width, _cFingers, _packetsCount, _lastFingers);
+// IOLog("STD :: Ignored Touch for Pressure %d, Width %d, Finger(s) count %d, Packets Count %d Last Finger %d\n",
+//                  _fing[0].pressure, _fing[0].width, _cFingers, _packetsCount, _lastFingers);
             return;
         }
         //
@@ -6224,11 +6222,11 @@ void ApplePS2SmartTouchpad::Synaptics_report_absolute(unsigned char *packet)
         //
         
         if (_kbEvent.showPressWidth) {
-            IOLog("STD :: Touch Primary ID %d Pressure %d Width %d, Secondary ID %d Pressure %d Width %d, Finger(s) count %d\n", _pid, ((_pid >= 0) ? _fing[_pid].pressure:-1),  ((_pid >= 0) ?_fing[_pid].width:-1), _sid,  (_sid >= 0) ?_fing[_sid].pressure:-1,  (_sid >= 0) ?_fing[_sid].width:-1, _cFingers);
+//            IOLog("STD :: Touch Primary ID %d Pressure %d Width %d, Secondary ID %d Pressure %d Width %d, Finger(s) count %d\n", _pid, ((_pid >= 0) ? _fing[_pid].pressure:-1),  ((_pid >= 0) ?_fing[_pid].width:-1), _sid,  (_sid >= 0) ?_fing[_sid].pressure:-1,  (_sid >= 0) ?_fing[_sid].width:-1, _cFingers);
         }
         else {
             if (!_palm.detected) {
-                IOLog("STD :: Palm detected for the requested Pressure %d and Width %d (Detected Finger(s) %d, Pressure %d, Width %d)\n", _palm.minPressure, _palm.minWidth, _cFingers, _fing[0].pressure, _fing[0].width);
+//                IOLog("STD :: Palm detected for the requested Pressure %d and Width %d (Detected Finger(s) %d, Pressure %d, Width %d)\n", _palm.minPressure, _palm.minWidth, _cFingers, _fing[0].pressure, _fing[0].width);
             }
             _palm.detected = true;
             _touchmode = MODE_PALM;
@@ -6480,7 +6478,7 @@ void ApplePS2SmartTouchpad::Process_passthrough_events_Synaptics(unsigned char *
 void ApplePS2SmartTouchpad::Process_fingers_change()
 {
     
-    IOLog("STD :: Fingers Status changed - Current Finger(s) %d, Last Finger(s) %d, Button Data %d State %d, _touchmode %d, Touchtime %lld, PacketsCount %d, FingOnBtn %d, _pid %d, _sid %d, RM %d %d, ESwipes %d, Drag %d, Tap %d\n", _cFingers, _lastFingers, _button.data, _button.state, _touchmode, _gestureTime, _packetsCount, _button.isFingOnBtnArea, _pid, _sid, _rotate.isRotateGesture, _rotate.isRotateMode, _swipe.isEdgeGesture, _drag.isDragging, _drag.isTapDrag);
+//    IOLog("STD :: Fingers Status changed - Current Finger(s) %d, Last Finger(s) %d, Button Data %d State %d, _touchmode %d, Touchtime %lld, PacketsCount %d, FingOnBtn %d, _pid %d, _sid %d, RM %d %d, ESwipes %d, Drag %d, Tap %d\n", _cFingers, _lastFingers, _button.data, _button.state, _touchmode, _gestureTime, _packetsCount, _button.isFingOnBtnArea, _pid, _sid, _rotate.isRotateGesture, _rotate.isRotateMode, _swipe.isEdgeGesture, _drag.isDragging, _drag.isTapDrag);
     
     //
     // Capable of multi touch? if so then update the finger slots (id)
@@ -6585,7 +6583,7 @@ void ApplePS2SmartTouchpad::Process_fingers_change()
             }
         }
         
-        IOLog("STD :: Data from finger %d are cleared\n", i+1);
+//        IOLog("STD :: Data from finger %d are cleared\n", i+1);
         
         for (; i < STD_MAX_FINGERS; i++) {
             _fing[i].tdx = _fing[i].tdy = 0;
@@ -6604,9 +6602,9 @@ void ApplePS2SmartTouchpad::Process_fingers_change()
                 _fing[i].x = _fing[i].y = 0;
                 _fing[i].last_x  = _fing[i].last_y  = 0;
             }
-            else {
+/*            else {
                 IOLog("STD :: Data reset from finger %d skipped\n", i+1);
-            }
+            }*/
         }
     }
     
@@ -8030,7 +8028,7 @@ void ApplePS2SmartTouchpad::Process_singlefinger_touch(int x, int y, int fid)
             //
             
             if (_fing[fid].pressure > _drag.fPressDragPressure && !_drag.isDragging && !_button.triggered
-                && _gestureTime < (_drag.fPressDragStartTimeOut + 3000000000)// 3 sec + timeout to detect
+                && _gestureTime < (_drag.fPressDragStartTimeOut + 3000000000U)// 3 sec + timeout to detect
                 && (xDelta < 10 && xDelta > -10 && yDelta < 10 && yDelta > -10)
                 && x < (_fing[fid].start_x + 15) && x > (_fing[fid].start_x - 15)
                 && y < (_fing[fid].start_y + 25) && y > (_fing[fid].start_y - 25))
@@ -10417,7 +10415,7 @@ void ApplePS2SmartTouchpad::Process_multiFingers_touch(int m_dx, int m_dy, int f
         //
         
         if (!_button.triggered
-            && _gestureTime < (_fingPress.timeout + 4000000000) // 4 sec + timeout to detect
+            && _gestureTime < (_fingPress.timeout + 4000000000U) // 4 sec + timeout to detect
             && (m_xDelta < 50 && m_yDelta < 50))
         {
             _fingPress.gestureTime = _gestureTime;
@@ -12034,7 +12032,7 @@ void ApplePS2SmartTouchpad::Process_touch_end()
         _doTimerJob = true;
     }
     
-   IOLog("STD :: Drag %d Tdrag %d Hdrag %d DLock %d, Last Fings count %d Fingers %d, TapChk %d, PC %d, TM %d,MaxScroll Lvl %d, LXD %d, LYD %d, FTime %lld, _scroll.noInertia %d Samples %d(%d), DSling %d Depth %d, TimerJob %d, DoCont %d, SETime %lld, RunTime %lld, isToggleMode %s, CPad %d, IDepth %d, QT %d\n",_drag.isDragging,_drag.isTapDrag,_drag.isHoldDrag,_isDragLockEnabled, _lastFingers,_cFingers,_drag.checkTapDrag,_packetsCount,_touchmode, _scroll.maxLevelReached,_scroll.dx,_scroll.dy, _gestureTime, _scroll.noInertia, scrollStopCounts, _scroll.stopSamples, _scroll.doSling, _scroll.slingDepth, _doTimerJob, _scroll.doCont, _scroll.slingEffectTime, _scroll.slingEffectRunTime, _kbEvent.isToggleKeyOnHold?"Yes":"No", _button.isClickPad, _scroll.inertiaDepth, _drag.isQuickTap);
+//   IOLog("STD :: Drag %d Tdrag %d Hdrag %d DLock %d, Last Fings count %d Fingers %d, TapChk %d, PC %d, TM %d,MaxScroll Lvl %d, LXD %d, LYD %d, FTime %lld, _scroll.noInertia %d Samples %d(%d), DSling %d Depth %d, TimerJob %d, DoCont %d, SETime %lld, RunTime %lld, isToggleMode %s, CPad %d, IDepth %d, QT %d\n",_drag.isDragging,_drag.isTapDrag,_drag.isHoldDrag,_isDragLockEnabled, _lastFingers,_cFingers,_drag.checkTapDrag,_packetsCount,_touchmode, _scroll.maxLevelReached,_scroll.dx,_scroll.dy, _gestureTime, _scroll.noInertia, scrollStopCounts, _scroll.stopSamples, _scroll.doSling, _scroll.slingDepth, _doTimerJob, _scroll.doCont, _scroll.slingEffectTime, _scroll.slingEffectRunTime, _kbEvent.isToggleKeyOnHold?"Yes":"No", _button.isClickPad, _scroll.inertiaDepth, _drag.isQuickTap);
     
     
     //
@@ -12108,7 +12106,7 @@ void ApplePS2SmartTouchpad::Process_touch_end()
     _pSmoothX = 0;
     _pSmoothY = 0;
     
-    _lastSample[SAMPLES_COUNT] = {0};
+    memset(&_lastSample, 0, sizeof(_lastSample));
     _skipSample     = 0;
     _scrollSample   = 0;
     _cSample        = 0;
@@ -12921,10 +12919,12 @@ void ApplePS2SmartTouchpad::EnhancePointerAcceleration()
         // then con_sider that touchpad might have some static interferences (seen in a laptop) or other problems.
         // So reset and reconnect the touchpad to make it normal.
         //
-        
-        if ((point_time - _lastDataTime) > (_pAccelCustom * 1000000)) {
+
+        uint64_t pt = *((uint64_t *)&point_time);
+	uint64_t lt = *((uint64_t *)&_lastDataTime);
+        if ((pt - lt) > ((uint64_t)_pAccelCustom * 1000000ULL)) {
             DEBUG_LOG("STD :: Data timeout for pointer acceleration %lld ns.\n", (point_time - _lastDataTime));
-            if ((point_time - _lastDataTime) > 3000000000)
+        if ((pt - lt) > 3000000000ULL)
             {
                 IOLog("STD :: Data timeout exceeded for pointer acceleration, processing stopped.\n");
                 Process_touch_end();
@@ -13052,9 +13052,11 @@ void ApplePS2SmartTouchpad::EnhanceScrollAcceleration()
             // then con_sider that touchpad might have some static interferences (seen in a laptop) or other problems.
             // So reset and reconnect the touchpad to make it normal.
             //
-            
-            if ((scroll_time - _lastDataTime) > 1000000000) {
-                IOLog("STD :: Data timeout for scroll acceleration %lld ns.\n", (scroll_time - _lastDataTime));
+       
+	uint64_t st = *((uint64_t *)&scroll_time);
+	uint64_t lt = *((uint64_t *)&_lastDataTime);     
+	if ((st - lt) > 1000000000) {
+                IOLog("STD :: Data timeout for scroll acceleration %lld ns.\n", (st - lt));
                 Reconnect_touchpad();
                 Process_touch_end();
                 StopScrollEnhanceTimer();

@@ -117,7 +117,7 @@ private:
         bool    enableLRSwipe;
         
         uint64_t  lastSwipeTime;
-    } _ps2Mouse = {0};
+    } _ps2Mouse;
     
     //
     // ELAN fields
@@ -151,7 +151,7 @@ private:
         UInt8 reg_25;
         UInt8 reg_26;
         
-    } _elanTPad = {0};
+    } _elanTPad;
     
     //
     // Synaptics fields
@@ -186,7 +186,7 @@ private:
         UInt32      press_start;
         bool        press;
         bool		report_press;
-    } _synTPad = {0};
+    } _synTPad;
     
     //
     // Plist key type
@@ -352,7 +352,7 @@ protected:
     
     bool IsFingerOnButtonArea(int y)
     {
-        IOLog("STD :: Skipping for finger position Y %d on button area\n", y);
+//        IOLog("STD :: Skipping for finger position Y %d on button area\n", y);
         return (y > (_ymax - _button.clickPadVBtnArea));
     }
 

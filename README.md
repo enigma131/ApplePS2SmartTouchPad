@@ -13,12 +13,18 @@ For compatibility with Leopard, AppleACPIPS2Nub is keeped embedded in kext and T
   
 Using with Opencore:  
 Kernel->add   : your compiled ApplePS2Controller.kext (32 bits or FAT version)  
-Kernel->Patch : identifier: com.apple.driver.AppleACPIPlatform, base: __GLOBAL__I__ZN15AppleACPIPS2Nub10gMetaClassE, max kernel: 8.99  
+Kernel->Patch : identifier: com.apple.driver.AppleACPIPlatform, base: __GLOBAL__I__ZN15AppleACPIPS2Nub10gMetaClassE, max kernel: 8.99, replace: ww==  
+  
+### Commit 2 :  
+Xcode 2.5 compatibility for ApplePS2SmartTouchPad.kext.  
+  
+Using with Opencore:  
+Kernel->add   : your compiled ApplePS2SmartTouchPad.kext (32 bits or FAT version)  
+  
   
 Original readme.md :  
-
-
-
+  
+  
 # ApplePS2SmartTouchPad
 
 macOS kernel extension (kext) providing **advanced PS/2 touchpad and keyboard support** with multi-touch gesture capabilities for Hackintosh laptops.

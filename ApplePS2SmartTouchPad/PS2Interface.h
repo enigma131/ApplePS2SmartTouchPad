@@ -16,22 +16,22 @@
 class PS2Interface
 {
 public:
-    virtual void Get_PS2_Acesss() = 0;
+    void Get_PS2_Acesss();
 
-    virtual void        setCommandByte(ApplePS2MouseDevice* device, UInt8 setBits, UInt8 clearBits);
-    virtual IOReturn    initializeMouse(ApplePS2MouseDevice* device, UInt8   mSampleRate,
+    void        setCommandByte(ApplePS2MouseDevice* device, UInt8 setBits, UInt8 clearBits);
+    IOReturn    initializeMouse(ApplePS2MouseDevice* device, UInt8   mSampleRate,
                                                                      UInt8   mResolution,
                                                                      UInt8   mScaling);
-    virtual IOReturn    resetMouse(ApplePS2MouseDevice* device);
-    virtual IOReturn    getStatus(ApplePS2MouseDevice* device);
-    virtual IOReturn    getMouseInformation(ApplePS2MouseDevice* device, UInt8 *param);
+    IOReturn    resetMouse(ApplePS2MouseDevice* device);
+    IOReturn    getStatus(ApplePS2MouseDevice* device);
+    IOReturn    getMouseInformation(ApplePS2MouseDevice* device, UInt8 *param);
     
-    virtual IOReturn    sendSynapticsCmd(ApplePS2MouseDevice* device, UInt8 cmd, UInt8 *param);
-    virtual IOReturn    sendElantechCmd(ApplePS2MouseDevice* device, UInt8 cmd, UInt8 *param);
+    IOReturn    sendSynapticsCmd(ApplePS2MouseDevice* device, UInt8 cmd, UInt8 *param);
+    IOReturn    sendElantechCmd(ApplePS2MouseDevice* device, UInt8 cmd, UInt8 *param);
     
-    virtual IOReturn    sendSlicedPS2Cmd(ApplePS2MouseDevice* device,UInt8 cmd);
-    virtual IOReturn    sendElactechPS2Cmd(ApplePS2MouseDevice* device,UInt8 cmd);
-    virtual IOReturn    sendPS2Cmd(ApplePS2MouseDevice* device,UInt8 cmd);
+    IOReturn    sendSlicedPS2Cmd(ApplePS2MouseDevice* device,UInt8 cmd);
+    IOReturn    sendElactechPS2Cmd(ApplePS2MouseDevice* device,UInt8 cmd);
+    IOReturn    sendPS2Cmd(ApplePS2MouseDevice* device,UInt8 cmd);
 
 };
 #endif /* defined(__ApplePS2SmartTouchPad__PS2Interface__) */
