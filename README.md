@@ -31,7 +31,16 @@ Info.plist adjusted for my Acer laptop's (French PS2 keyboad), for other setting
 Using with Opencore:  
 Kernel->add   : your compiled ApplePS2Keyboard.kext (32 bits or FAT version)  
 
+### Commit 4 :  
+bump kexts versions to 4.6.9  
+Project for 64 bits compilation (xcode 4.6 / Snow Leopard) in release point zip, compiled kexts in build folder.  
+FAT combined binarys also in release point separated zip.  
   
+  
+capture:  
+
+<img src="images/capture.png" width="800">  
+    
 Original readme.md :  
   
   
