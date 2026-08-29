@@ -26,8 +26,6 @@
 		<dict>
 			<key>CFBundleIdentifier</key>
 			<string>org.emlydinesh.driver.${PRODUCT_NAME:rfc1034identifier}</string>
-			<key>ProductID</key>
-			<integer>782</integer>
 			<key>VendorID</key>
 			<integer>1452</integer>
 			<key>Extended Functions</key>
@@ -128,13 +126,13 @@
 			<key>Fn keys Layout</key>
 			<string>NONE</string>
 			<key>Fn keys Mode</key>
-			<integer>2</integer>
+			<integer>3</integer>
 			<key>IOClass</key>
 			<string>ApplePS2Keyboard</string>
 			<key>IOProviderClass</key>
 			<string>ApplePS2KeyboardDevice</string>
 			<key>Keyboard type (ID)</key>
-			<integer>0</integer>
+			<integer>50</integer>
 			<key>Preferences</key>
 			<dict>
 				<key>Disable Num Lock LED</key>
@@ -162,14 +160,14 @@
 				<key>Make shift + caps into Fn key</key>
 				<true/>
 				<key>Num Lock enabled at boot</key>
-				<false/>
-				<key>Swap alt and windows key</key>
 				<true/>
+				<key>Swap alt and windows key</key>
+				<false/>
 				<key>Enable Sierra Caps Lock Fix</key>
 				<true/>
 			</dict>
 			<key>Use ISO Layout</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
@@ -178,7 +176,7 @@
 	<string>${CURRENT_PROJECT_VERSION}</string>
 	<key>OSBundleLibraries</key>
 	<dict>
-		<key>com.apple.iokit.IOHIDSystem</key>
+		<key>com.apple.iokit.IOHIDFamily</key>
 		<string>IOHID_VER</string>
 		<key>com.apple.kpi.iokit</key>
 		<string>OSX_FAMILY_VER</string>

@@ -17,10 +17,20 @@ Kernel->Patch : identifier: com.apple.driver.AppleACPIPlatform, base: __GLOBAL__
   
 ### Commit 2 :  
 Xcode 2.5 compatibility for ApplePS2SmartTouchPad.kext.  
+Info.plist: see documents TXT.rtf / Guide.rtf  
   
 Using with Opencore:  
 Kernel->add   : your compiled ApplePS2SmartTouchPad.kext (32 bits or FAT version)  
   
+### Commit 3 :  
+Xcode 2.5 compatibility for ApplePS2Keyboard.kext.  
+Suppress Nvram access for 32 bits version (used by AsusKBacklight) since AppleEFIRuntime is disabled for Tiger & Leopard.  
+Fix "Use ISO Layout" for Sierra+  
+Info.plist adjusted for my Acer laptop's (French PS2 keyboad), for other settings see https://osxlatitude.com/forums/topic/5969-details-about-the-enhanced-keyboard-for-smart-touchpad-driver/?do=findComment&comment=32306  
+  
+Using with Opencore:  
+Kernel->add   : your compiled ApplePS2Keyboard.kext (32 bits or FAT version)  
+
   
 Original readme.md :  
   

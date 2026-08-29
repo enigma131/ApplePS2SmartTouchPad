@@ -31,7 +31,7 @@
 
 // #include <libkern/c++/OSBoolean.h>
 
-#define MODIFIERS_STATUS_CHK_INTERVAL 4000000000 // 4 sec, going above 4 won't compile in 32bit
+#define MODIFIERS_STATUS_CHK_INTERVAL 4000000000ULL // 4 sec, going above 4 won't compile in 32bit
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Definitions used to keep track of key state.   Key up/down state is tracked
@@ -80,8 +80,8 @@ private:
 
     UInt8           _osxVersion;
 
-    clock_sec_t     _lastEventSecs;
-    clock_usec_t    _lastEventMicrosecs;
+    uint32_t        _lastEventSecs;
+    uint32_t        _lastEventMicrosecs;
     uint64_t        _lastModifiersReadTime;
     uint64_t        _lastKeyPressTime;
     

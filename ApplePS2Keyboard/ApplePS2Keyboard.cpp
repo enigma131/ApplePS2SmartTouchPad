@@ -31,6 +31,7 @@
 #include <IOKit/hidsystem/ev_keymap.h>
 #include "ApplePS2Keyboard.h"
 #include "ApplePS2ToADBMap.h"
+#include <libkern/version.h>    // added for kernel version detection
 
 #define DEBUG_KBRD 1
 
@@ -221,8 +222,13 @@ UInt32 ApplePS2Keyboard::deviceType()
         case kgestUSBGenericISOkd:
             // Changing Keyboard layout with ISO Specific Mappings
             if (kOSBooleanTrue == getProperty("Use ISO Layout")) {
-                PS2ToADBMap[0x29] = 0x0a;
-                PS2ToADBMap[0x56] = 0x32;
+                if (strtol(osrelease, NULL, 10) >= 16) { // Sierra+
+                    PS2ToADBMap[0x29] = 0x32;            // exchange < and little 2
+                    PS2ToADBMap[0x56] = 0x0a;
+                } else { 
+                    PS2ToADBMap[0x29] = 0x0a;
+                    PS2ToADBMap[0x56] = 0x32;
+                }
                 DEBUG_LOG("%s :: Keyboard layout set to ISO with ID 0x%02x\n", this->getName(), (unsigned int)id);
             }
             break;
@@ -578,7 +584,10 @@ void ApplePS2Keyboard::stop(IOService * provider)
     // Release the pointer to the provider object.
     //
     
-    OSSafeReleaseNULL(_device);
+  	if (_device) {
+		_device->release();
+		_device = NULL;
+	}
     
     
     super::stop(provider);
@@ -697,7 +706,10 @@ void ApplePS2Keyboard::ReadKeyboardPreferences()
                 }
             }
         }
-        OSSafeReleaseNULL(dictKeyIter);
+		if (dictKeyIter) {
+			dictKeyIter->release();
+			dictKeyIter = NULL;
+		}
     }
 }
 
@@ -1159,7 +1171,10 @@ void ApplePS2Keyboard::ReadExtendedFunctionsConfig()
             }
             
         }
-        OSSafeReleaseNULL(dictKeyIter);
+		if (dictKeyIter) {
+			dictKeyIter->release();
+			dictKeyIter = NULL;
+		}
     }
 }
 //
@@ -2514,8 +2529,8 @@ void ApplePS2Keyboard::processFnKeys(UInt32 keyCode, bool keyDown)
     
     bool    rateLimit = false;
     UInt8   fnKeyCode = 0;
-    clock_sec_t  secs, deltaSecs;
-    clock_usec_t microsecs, deltaMicrosecs;
+    uint32_t secs, deltaSecs;
+    uint32_t microsecs, deltaMicrosecs;
     
     clock_get_system_microtime(&secs, &microsecs);
     deltaSecs = secs - _lastEventSecs;
@@ -2524,7 +2539,7 @@ void ApplePS2Keyboard::processFnKeys(UInt32 keyCode, bool keyDown)
     // otherwise the system slow down and the sound/sun bezel lags.
     if (deltaSecs < 2)
     {
-        deltaMicrosecs =(clock_usec_t) (microsecs + (1000000 * deltaSecs) - _lastEventMicrosecs);
+	deltaMicrosecs =(uint32_t) (microsecs + (1000000 * deltaSecs) - _lastEventMicrosecs);
         
         if (deltaMicrosecs < 2000000) // rate limiter to 200 ms
         {
@@ -2876,7 +2891,10 @@ void ApplePS2Keyboard::processFnkeySleep()
             DEBUG_LOG("%s: Sleep notifier method not found\n",this->getName());
         
     }
-    OSSafeRelease(acpiProvider);
+	if (acpiProvider) {
+		acpiProvider->release();
+		acpiProvider = NULL;
+	}
     
     IOPMrootDomain * rootDomain = getPMRootDomain();
     if (rootDomain)
@@ -3028,7 +3046,7 @@ void ApplePS2Keyboard::setAsusKBlight(UInt8 lvl)
                 //
                 
                 if(lvl != 0xED && lvl != 0xEA) {
-                    saveValueToNVRAM("AsusKeyboardBackLightLvl", lvl);
+//                    saveValueToNVRAM("AsusKeyboardBackLightLvl", lvl);
                 }
             }
             else
@@ -4608,7 +4626,7 @@ void ApplePS2Keyboard::receiveTouchpadNotifications(UInt32 data)
                 SInt8 nvramValue = -1;
                 
                 // Load backlight level from NVRAM
-                LoadValuesFromNVRAM();
+//                LoadValuesFromNVRAM();
                 nvramValue = _kbrdBackLightLvl;
                 
                 _kbrdBackLightLvl = readAsusKBlight(0);
@@ -4702,6 +4720,8 @@ void ApplePS2Keyboard::releaseKey(UInt8 keyCode)
 /*
  * NVRAM Load and Save methods
  */
+
+/*
 void ApplePS2Keyboard::LoadValuesFromNVRAM()
 {
     _kbrdBackLightLvl = -1;
@@ -4778,3 +4798,4 @@ void ApplePS2Keyboard::saveValueToNVRAM(const char * symbol, UInt8 value)
         nvramEntry->release();
     }
 }
+*/
