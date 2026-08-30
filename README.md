@@ -8,7 +8,7 @@ The FAT combined 32+64 bits versions with Lipo are working with all Intel MacOS 
   
 ### Commit 1 :  
 Xcode 2.5 compatibility for ApplePS2Controller.kext, targets Tiger + Leopard 32 bits.  
-If you need a FAT version, you can combine Tiger 32 bits compilation and Snow Leopard 64 bit compilation (Xcode 4.6 is need) with lipo.  
+If you need a FAT version, you can combine Tiger 32 bits compilation and Snow Leopard 64 bit compilation (Xcode 4.2 is need) with lipo.  
 For compatibility with Leopard, AppleACPIPS2Nub is keeped embedded in kext and Tiger's internal one must be disabled with bellow kernel patch.  
   
 Using with Opencore:  
